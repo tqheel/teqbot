@@ -1,0 +1,14 @@
+{
+  "name": "teqbot",
+  "version": "1.0.0",
+  "description": "A bot that listens on a TCP socket for commands and can respond to certain inputs.",
+  "main": "msgclient.js",
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Todd E. Qualls",
+  "license": "GNU"
+}
