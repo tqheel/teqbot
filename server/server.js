@@ -60,7 +60,7 @@ var server = net.createServer(function(socket){
 	});
 	
 });
-server.listen(port,host);
+server.listen(port);
 
 console.log('Server listening on '+ host+':'+port);
 
