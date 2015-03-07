@@ -4,7 +4,7 @@ var weather = require('./commands/weather.js');
 var botname = 'teqbot';
 
 var port = 1337;
-var host = '127.0.0.1';
+var host = 'localhost';
 
 var commands = [
 		'weather',
@@ -60,7 +60,7 @@ var server = net.createServer(function(socket){
 	});
 	
 });
-server.listen(port,host);
+server.listen(port);
 
 console.log('Server listening on '+ host+':'+port);
 

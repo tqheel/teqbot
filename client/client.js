@@ -5,21 +5,24 @@ var host = '127.0.0.1';
 var port = 1337;
 var city = process.argv[3];
 
+module.exports = {
+	send: send
+};
 
-client.connect(port, host, function(){
-	//console.log('Connected to: ' +host+':'+port);
-	if(!process.argv[2]){
+function send(command){
+	client.connect(port, host, function(){
+	if(!command){
 		client.write('nuthin');
 	}
 	else{
-		client.write(process.argv[2]);
-	}
-	
-});
-client.on('data', function(data){
-	console.log(data.toString());
-	client.destroy();
-});
-client.on('close', function() {
-    //console.log('Connection closed');
-});
+		client.write(command);
+	}	
+	});
+	client.on('data', function(data){
+		console.log(data.toString());
+		client.destroy();
+	});
+	client.on('close', function() {
+	    //console.log('Connection closed');
+	});
+}

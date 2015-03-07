@@ -8,9 +8,9 @@ array.
 To run locally, first run "npm install" from the root of the project. Then:
 - Switch to the server directory
 - Run "node server"
-- Open a new terminal session and switch to the client folder
-- Run "node client"
-- The bot should respond with a list of available commands
+- Open a new terminal session
+- Run "node teqbot"
+- Enter a command as prompted
 
 Commands currently available as of 3/6/2015:
 - hello

@@ -1,5 +1,5 @@
 var http = require("http");
-var openWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
+var openWeatherCurrentUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
 
 
 function convertKelvinToCelsius(kelvin){
@@ -12,7 +12,7 @@ function convertKelvinToFahrenheit(kelvin){
 }
 
 function getWeatherByCity(city, callback){
-	return http.get(openWeatherUrl + encodeURIComponent(city), function(response) {
+	return http.get(openWeatherCurrentUrl + encodeURIComponent(city), function(response) {
 		response.setEncoding('utf8');
 		var responseData = '';
 		response.on('data', function(chunk){
@@ -27,7 +27,7 @@ function getWeatherByCity(city, callback){
 			var jsonData = JSON.parse(responseData);
 			var temp =  convertKelvinToFahrenheit(jsonData.main.temp);
 			var condition = jsonData.weather[0].main;
-			return callback('In '+ city + ', the current temperature is ' + temp + ' and '+ condition);
+			return callback('In '+ city + ', the current conditions are ' + temp + ' degrees and '+ condition);
 		});	
 	});
 }
