@@ -1,7 +1,7 @@
 var net = require('net');
 
 var client = new net.Socket();
-var host = '127.0.0.1';
+var host = '191.238.56.55';
 var port = 1337;
 var city = process.argv[3];
 

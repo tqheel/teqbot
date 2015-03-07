@@ -4,7 +4,7 @@ var weather = require('./commands/weather.js');
 var botname = 'teqbot';
 
 var port = 1337;
-var host = '100.74.74.67';
+var host = '191.238.56.55';
 
 var commands = [
 		'weather',
