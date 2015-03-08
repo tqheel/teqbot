@@ -4,6 +4,7 @@
   "description": "A bot that listens on a TCP socket for commands and can respond to certain inputs.",
   "main": "msgclient.js",
   "dependencies": {
+    "readline": "0.0.7"
   },
   "devDependencies": {},
   "scripts": {

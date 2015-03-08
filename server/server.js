@@ -4,7 +4,7 @@ var weather = require('./commands/weather.js');
 var botname = 'teqbot';
 
 var port = 1337;
-var host = '191.238.56.55';
+var host = 'localhost';
 
 var commands = [
 		'weather',
@@ -26,10 +26,18 @@ function zeroPadIfNeeded(input){
 	return (input<10) ? '0' + input.toString() : input.toString();
 }
 function processMessage(msg, callback){
-	var response = '';
-	switch(msg.toString().toLowerCase()){
+	var msgArray = msg.toString().split('>');
+	var command = msgArray[0].toLowerCase();
+	var arg1 = (msgArray[1]) ? msgArray[1] : '';
+	var arg2 = (msgArray[2]) ? msgArray[2] : '';
+	var arg3 = (msgArray[3]) ? msgArray[3] : '';
+
+	switch(command){
 		case commands[0]:
-			weather.getWeatherByCity('Cary, NC, USA', callback);
+			var defaultLocation = 'Cary, NC, USA';
+			var city = (arg1!='') ? arg1 : defaultLocation;
+			//weather.getWeatherByCity('Cary, NC, USA', callback);
+			weather.getWeatherByCity(city, callback);
 			break;
 		case commands[1]:
 			callback('Hi. How are you?');
@@ -47,7 +55,7 @@ function processMessage(msg, callback){
 
 var server = net.createServer(function(socket){
 	socket.on('error', function(error){
-		console.log('Empty request received.');
+		console.log(botname+ ': There was an error processing your command.');
 
 	});
 	socket.on('data', function(data){
