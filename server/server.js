@@ -4,7 +4,7 @@ var weather = require('./commands/weather.js');
 var botname = 'teqbot';
 
 var port = 1337;
-var host = 'localhost';
+var host = 'teqdevlin.cloudapp.net';
 
 var commands = [
 		'weather',
