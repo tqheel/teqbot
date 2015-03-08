@@ -1,8 +1,6 @@
 var http = require("http");
 var openWeatherCurrentUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
 
-};
-
 function convertKelvinToCelsius(kelvin){
 	return kelvin - 273.15;
 }
