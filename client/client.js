@@ -3,7 +3,6 @@ var net = require('net');
 var client = new net.Socket();
 var host = '127.0.0.1';
 var port = 1337;
-var city = process.argv[3];
 
 module.exports = {
 	send: send

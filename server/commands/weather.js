@@ -25,9 +25,16 @@ function getWeatherByCity(city, callback){
 		});
 		response.on('end', function(){
 			var jsonData = JSON.parse(responseData);
-			var temp =  convertKelvinToFahrenheit(jsonData.main.temp);
-			var condition = jsonData.weather[0].main;
-			return callback('In '+ city + ', the current conditions are ' + temp + ' degrees and '+ condition);
+			try{
+				var temp =  convertKelvinToFahrenheit(jsonData.main.temp);
+				var condition = jsonData.weather[0].main;
+				return callback('In '+ city + ', the current conditions are ' + temp + ' degrees and '+ condition);
+			}catch(e){
+				console.log('Error retrieving weather for ' + city + ': '+e);
+				return callback('Sorry, no weather information was found for '+ city);
+				
+			}
+			
 		});	
 	});
 }
