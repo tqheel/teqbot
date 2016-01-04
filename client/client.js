@@ -1,7 +1,7 @@
 var net = require('net');
 
 var client = new net.Socket();
-var host = '127.0.0.1';
+var host = 'teqdevlin.cloudapp.net';
 var port = 1337;
 
 module.exports = {
