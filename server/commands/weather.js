@@ -1,7 +1,6 @@
 var http = require("http");
 var openWeatherCurrentUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
 
-
 function convertKelvinToCelsius(kelvin){
 	return kelvin - 273.15;
 }
@@ -22,8 +21,10 @@ function getWeatherByCity(city, callback){
 			error.forEach(function(e){
 				console.log(e);
 			});
+			return callback('There was an error retrieving weather data: ' + error);
 		});
 		response.on('end', function(){
+
 			var jsonData = JSON.parse(responseData);
 			try{
 				var temp =  convertKelvinToFahrenheit(jsonData.main.temp);
