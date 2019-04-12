@@ -1,5 +1,18 @@
 var http = require("http");
+var fs = require('fs');
+var apiKeyFile = './secrets/openweatherkey.json';
 var openWeatherCurrentUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
+
+var apiKey = '';
+
+fs.readFile(apiKeyFile, 'utf8', function(err, data) {
+	if (err) {
+		throw err;
+	}
+	apiKey = JSON.parse(data).apiKey;
+});
+
+
 
 function convertKelvinToCelsius(kelvin){
 	return kelvin - 273.15;
@@ -11,7 +24,7 @@ function convertKelvinToFahrenheit(kelvin){
 }
 
 function getWeatherByCity(city, callback){
-	return http.get(openWeatherCurrentUrl + encodeURIComponent(city), function(response) {
+	return http.get(openWeatherCurrentUrl + encodeURIComponent(city) + '&APPID=' + apiKey, function(response) {
 		response.setEncoding('utf8');
 		var responseData = '';
 		response.on('data', function(chunk){
@@ -26,6 +39,7 @@ function getWeatherByCity(city, callback){
 		response.on('end', function(){
 
 			var jsonData = JSON.parse(responseData);
+			console.log(`response from api: ${responseData}`);
 			try{
 				var temp =  convertKelvinToFahrenheit(jsonData.main.temp);
 				var condition = jsonData.weather[0].main;
