@@ -8,8 +8,7 @@ To run locally, first run "npm install" from the root of the project. Then:
 - Obtain an API key from [OpenWeatherMap.org](https://openweathermap.org/appid)
 - Create a json file in ./secrets dir called openweatherkey.json
   -  Add as single property called "apiKey" with a value of the key provided to you
-- Switch to the server directory
-- Type "node server"
+- Type "node server/server" from the root of the project
 - Open a new terminal session
 - Type "node teqbot" from the root of the project
 - Enter a command as prompted
